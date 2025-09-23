@@ -1,4 +1,3 @@
-
 import { Link } from 'react-router-dom';
 import { ArrowRight, Star, Users, Code, Search, Palette, Video, Linkedin, Brain, Megaphone, Globe, MessageCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -113,6 +112,46 @@ const Index = () => {
         </div>
       </section>
 
+      {/*About us section*/}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-muted/20">
+        <div className="max-w-7xl mx-auto">
+          
+          {/* Centered heading */}
+          <div className="text-center mb-12 animate-fade-up">
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground">
+              Who are we?
+            </h2>
+          </div>
+
+          {/* Two-column layout: paragraph left, image right */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center animate-fade-up">
+            
+            {/* Left: paragraph */}
+            <div>
+              <p className="text-xl text-muted-foreground leading-relaxed">
+                Brandopia is a digital-first agency reimagining how brands are built. 
+                From branding to UI/UX design to web and mobile development, we believe 
+                in empowering businesses and individuals to rise from the ground up. 
+                Our vision is simple: turn your brand into a digital force that inspires, 
+                connects, and endures.
+              </p>
+            </div>
+
+            {/* Right: image */}
+            <div className="flex justify-center">
+              <img 
+                src="/assets/e0c5ab15-3ee1-4f58-965d-171841ca11d9.png"
+                alt="Brandopia"
+                className="w-full max-w-md rounded-lg shadow-lg"
+              />
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      
+
       {/* Services Section */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-muted/20">
         <div className="max-w-7xl mx-auto">
@@ -187,7 +226,7 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Testimonials Section */}
+      {/* Testimonials Section
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-muted/20">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16 animate-fade-up">
@@ -221,6 +260,7 @@ const Index = () => {
           </div>
         </div>
       </section>
+      */}
 
       {/* CTA Section */}
       <section className="py-20 px-4 sm:px-6 lg:px-8">

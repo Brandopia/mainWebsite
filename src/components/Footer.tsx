@@ -134,7 +134,7 @@ const Footer = () => {
             <ul className="space-y-2">
               <li className="flex items-center space-x-2 text-sm text-muted-foreground">
                 <Mail className="h-4 w-4" />
-                <span>hello@brandopia.com</span>
+                <span>brandopia.org@gmail.com</span>
               </li>
             </ul>
             <div className="mt-4">
@@ -156,7 +156,7 @@ const Footer = () => {
         <div className="mt-8 pt-8 border-t border-border">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-sm text-muted-foreground">
-              © 2024 Brandopia. All rights reserved.
+              © 2025 Brandopia. All rights reserved.
             </p>
             <div className="flex space-x-6 mt-4 md:mt-0">
               <Link

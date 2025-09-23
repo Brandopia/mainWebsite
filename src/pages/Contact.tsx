@@ -37,21 +37,15 @@ const Contact = () => {
     {
       icon: <Mail className="h-6 w-6" />,
       title: "Email Us",
-      details: "hello@brandopia.com",
+      details: "brandopia.org@gmail.com",
       description: "Send us an email and we'll respond within 24 hours"
     },
     {
       icon: <Phone className="h-6 w-6" />,
       title: "Call Us",
-      details: "+1 (555) 123-4567",
+      details: ["+91 8368663902,+91 83696 65548 (urgent only)"],
       description: "Monday to Friday from 9am to 6pm EST"
     },
-    {
-      icon: <MapPin className="h-6 w-6" />,
-      title: "Visit Us",
-      details: "123 Business Ave, Suite 100",
-      description: "New York, NY 10001"
-    }
   ];
 
   const services = [
@@ -111,7 +105,7 @@ const Contact = () => {
       </section>
 
       {/* Stats Section */}
-      <section className="pb-20 px-4 sm:px-6 lg:px-8">
+      {/*<section className="pb-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 animate-scale-in">
             {stats.map((stat, index) => (
@@ -127,7 +121,7 @@ const Contact = () => {
             ))}
           </div>
         </div>
-      </section>
+      </section>*/}
 
       {/* Contact Form and Info Section */}
       <section className="pb-20 px-4 sm:px-6 lg:px-8">

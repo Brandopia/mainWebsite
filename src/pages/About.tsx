@@ -1,4 +1,3 @@
-
 import { Users, Award, Clock, Star } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import Navigation from '@/components/Navigation';
@@ -28,19 +27,12 @@ const About = () => {
     }
   ];
 
-  const milestones = [
-    { year: "2018", title: "Agency Founded", description: "Started with a vision to create exceptional digital experiences" },
-    { year: "2019", title: "Team Expansion", description: "Grew to 10 talented professionals across design and development" },
-    { year: "2021", title: "100+ Projects", description: "Successfully delivered over 100 projects for clients worldwide" },
-    { year: "2023", title: "Industry Recognition", description: "Received multiple awards for outstanding design and innovation" },
-    { year: "2024", title: "Global Reach", description: "Expanded our services internationally with clients in 20+ countries" }
-  ];
+ 
 
   const stats = [
-    { number: "200+", label: "Projects Completed" },
-    { number: "50+", label: "Happy Clients" },
-    { number: "6", label: "Years Experience" },
-    { number: "25+", label: "Team Members" }
+    { number: "150+", label: "Projects Completed" },
+    { number: "10+", label: "Years Experience" },
+    { number: "15+", label: "Team Members" }
   ];
 
   return (
@@ -94,6 +86,30 @@ const About = () => {
         </div>
       </section>
 
+      {/* Mission & Vision Section */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+            <div>
+              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
+                Mission
+              </h2>
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                Our mission is to uplift brands by blending creativity with technology, building identities that are not only visually striking but strategically powerful. We aim to transform businesses and individuals alike through digital solutions that spark growth, foster trust, and leave a lasting impact.
+              </p>
+            </div>
+            <div>
+              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
+                Vision
+              </h2>
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                Our vision is to create a world where every brand—no matter its size or origin—has the tools, voice, and presence to thrive in the digital age. We aspire to be the bridge between ambition and achievement, turning untold stories into influential legacies that shape industries and inspire people.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Values Section */}
       <section className="py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
@@ -129,7 +145,7 @@ const About = () => {
       {/* Stats Section */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-primary text-primary-foreground">
         <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-8 text-center">
             {stats.map((stat, index) => (
               <div key={index} className="animate-fade-up">
                 <div className="text-4xl md:text-5xl font-bold mb-2">{stat.number}</div>
@@ -139,39 +155,8 @@ const About = () => {
           </div>
         </div>
       </section>
-
-      {/* Timeline Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-              Our Journey
-            </h2>
-            <p className="text-xl text-muted-foreground">
-              Key milestones that have shaped our agency's growth and success.
-            </p>
-          </div>
-          
-          <div className="space-y-8">
-            {milestones.map((milestone, index) => (
-              <div key={index} className="flex items-start space-x-6">
-                <div className="flex-shrink-0 w-20 text-right">
-                  <span className="text-2xl font-bold text-primary">{milestone.year}</span>
-                </div>
-                <div className="flex-shrink-0 w-4 h-4 bg-primary rounded-full mt-2"></div>
-                <div className="flex-1">
-                  <h3 className="text-xl font-semibold text-foreground mb-2">{milestone.title}</h3>
-                  <p className="text-muted-foreground">{milestone.description}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       <Footer />
     </div>
   );
 };
-
 export default About;

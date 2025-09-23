@@ -1,4 +1,3 @@
-
 import { Link } from 'react-router-dom';
 import { ArrowRight, Linkedin, Twitter, Globe } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -30,10 +29,13 @@ const Team = () => {
       }
     },
     {
-      name: "Marcus Johnson",
-      role: "Lead Developer",
-      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&h=300&fit=crop",
-      bio: "Full-stack developer with expertise in modern web technologies and AI integration.",
+      name: "Kishan Dubey",
+      role: "HR",
+      image: "/assets/kishan.jpeg",
+      bio: [
+        "Hi, I’m Kishan.",
+        "I am a hardworking, punctual, and efficient individual who values trust and responsibility in every role I take on. Currently, I serve as the Chief Human Resources Officer (CHRO) at Brandopia, where I oversee the people side of the company—ensuring smooth coordination, fostering teamwork, and maintaining a culture of reliability and growth. Alongside my role, I am pursuing my education at Bhaurav Devras Saraswati Vidya Mandir, which further strengthens my dedication and discipline."
+      ],
       social: {
         linkedin: "#",
         website: "#"
@@ -93,7 +95,7 @@ const Team = () => {
   return (
     <div className="min-h-screen bg-background">
       <SEO 
-        title="Our Team"
+        title="Meet our leadership Team"
         description="Meet the talented professionals behind Brandopia. Our diverse team of experts in web development, design, marketing, and AI consultancy."
         keywords="team, web developers, designers, marketing experts, AI consultants"
         url="/team"
@@ -104,7 +106,7 @@ const Team = () => {
       <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto text-center animate-fade-up">
           <h1 className="text-4xl md:text-6xl font-bold text-foreground mb-6">
-            Meet Our Team
+            Leadership Team
           </h1>
           <p className="text-xl text-muted-foreground leading-relaxed">
             A diverse group of passionate professionals dedicated to creating exceptional digital experiences for our clients.
@@ -128,7 +130,15 @@ const Team = () => {
                   </div>
                   <h3 className="text-xl font-semibold text-foreground mb-2">{member.name}</h3>
                   <p className="text-primary font-medium mb-3">{member.role}</p>
-                  <p className="text-muted-foreground text-sm mb-4">{member.bio}</p>
+                  <div className="text-muted-foreground text-sm mb-4">
+                    {Array.isArray(member.bio) ? (
+                      member.bio.map((line, idx) => (
+                        <p key={idx} className="mb-2">{line}</p>
+                      ))
+                    ) : (
+                      <p>{member.bio}</p>
+                    )}
+                  </div>
                   <div className="flex justify-center space-x-3">
                     {member.social.linkedin && (
                       <a href={member.social.linkedin} className="text-muted-foreground hover:text-primary transition-colors">
