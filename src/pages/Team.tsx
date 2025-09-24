@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { ArrowRight, Linkedin, Twitter, Globe } from 'lucide-react';
+import { ArrowRight, Linkedin, Twitter, Globe, Instagram } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import Navigation from '@/components/Navigation';
@@ -30,7 +30,7 @@ const Team = () => {
     },
     {
       name: "Kishan Dubey",
-      role: "HR",
+      role: "CHRO",
       image: "/assets/kishan.jpeg",
       bio: [
         "Hi, I’m Kishan.",
@@ -42,35 +42,17 @@ const Team = () => {
       }
     },
     {
-      name: "Emily Thompson",
-      role: "Marketing Strategist",
-      image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=300&h=300&fit=crop",
-      bio: "Digital marketing expert with a proven track record in SEO and content strategy.",
+      name: "Leander Fernandes",
+      role: "CTO",
+      image: "/assets/leander.jpeg",
+      bio: ["Hi, I’m Leander.",
+            "An highly ambitious and technology-driven Computer Engineering student at KJ Somaiya College of Engineering, Vidyavihar. As the Chief Technical Officer at Brandopia, I oversee the technical aspects of client projects, including the development of brand identity and e-commerce websites."
+            ],
       social: {
-        linkedin: "#",
-        twitter: "#"
+        linkedin: "https://www.linkedin.com/in/leander-f-a413b8291/",
+        instagram: "https://www.instagram.com/leander0905?igsh=OGQ5ZDc2ODk2ZA=="
       }
     },
-    {
-      name: "David Park",
-      role: "Video Production Lead",
-      image: "https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?w=300&h=300&fit=crop",
-      bio: "Creative video producer and editor with expertise in both long-form and short-form content.",
-      social: {
-        linkedin: "#",
-        website: "#"
-      }
-    },
-    {
-      name: "Lisa Wang",
-      role: "AI Consultant",
-      image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=300&h=300&fit=crop",
-      bio: "AI specialist helping businesses integrate cutting-edge artificial intelligence solutions.",
-      social: {
-        linkedin: "#",
-        twitter: "#"
-      }
-    }
   ];
 
   const values = [
@@ -117,7 +99,7 @@ const Team = () => {
       {/* Team Members Section */}
       <section className="py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
             {teamMembers.map((member, index) => (
               <Card key={index} className="hover:shadow-xl transition-all duration-300 border-border animate-scale-in hover:scale-105">
                 <CardContent className="p-6 text-center">
@@ -140,14 +122,14 @@ const Team = () => {
                     )}
                   </div>
                   <div className="flex justify-center space-x-3">
+                    {member.social.instagram && (
+                      <a href={member.social.instagram} className="text-muted-foreground hover:text-primary transition-colors">
+                        <Instagram className="h-5 w-5" />
+                      </a>
+                    )}
                     {member.social.linkedin && (
                       <a href={member.social.linkedin} className="text-muted-foreground hover:text-primary transition-colors">
                         <Linkedin className="h-5 w-5" />
-                      </a>
-                    )}
-                    {member.social.twitter && (
-                      <a href={member.social.twitter} className="text-muted-foreground hover:text-primary transition-colors">
-                        <Twitter className="h-5 w-5" />
                       </a>
                     )}
                     {member.social.website && (
