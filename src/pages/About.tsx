@@ -61,18 +61,13 @@ const About = () => {
                 Our Story
               </h2>
               <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-                Founded in 2018, our agency began with a simple mission: to help businesses 
-                create meaningful connections with their audiences through exceptional design 
-                and strategic thinking.
+                Our agency was founded with a clear purpose: to empower businesses to embrace digital transformation, establish a strong online presence, and connect with wider audiences through the power of the internet.
               </p>
               <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-                What started as a small team of passionate creatives has grown into a 
-                full-service digital agency, working with clients from startups to Fortune 500 
-                companies across various industries.
+                What began as a small collective of dedicated innovators has evolved into a full-scale digital agency, proudly serving clients ranging from emerging startups to established Fortune 500 enterprises across diverse industries.
               </p>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                Today, we continue to push boundaries, embrace new technologies, and deliver 
-                innovative solutions that drive real business results.
+                Today, we remain committed to pushing boundaries, adopting cutting-edge technologies, and crafting transformative solutions that generate meaningful and measurable business impact.
               </p>
             </div>
             <div className="relative">

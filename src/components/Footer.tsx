@@ -24,25 +24,9 @@ const Footer = () => {
             </p>
             <div className="flex space-x-4">
               <a
-                href="#"
-                className="text-muted-foreground hover:text-primary transition-colors"
-              >
-                <Twitter className="h-5 w-5" />
-              </a>
-              <a
-                href="#"
-                className="text-muted-foreground hover:text-primary transition-colors"
-              >
-                <Facebook className="h-5 w-5" />
-              </a>
-              <a
-                href="#"
-                className="text-muted-foreground hover:text-primary transition-colors"
-              >
-                <Instagram className="h-5 w-5" />
-              </a>
-              <a
-                href="#"
+                href="https://in.linkedin.com/company/brandopia"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-primary transition-colors"
               >
                 <Linkedin className="h-5 w-5" />
@@ -115,14 +99,6 @@ const Footer = () => {
                   className="text-sm text-muted-foreground hover:text-primary transition-colors"
                 >
                   Brand Consulting
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/services"
-                  className="text-sm text-muted-foreground hover:text-primary transition-colors"
-                >
-                  AI Consultancy
                 </Link>
               </li>
             </ul>

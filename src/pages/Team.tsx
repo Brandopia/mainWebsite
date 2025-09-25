@@ -9,23 +9,21 @@ import SEO from '@/components/SEO';
 const Team = () => {
   const teamMembers = [
     {
-      name: "Alex Rodriguez",
+      name: "Tanishka Narsaria",
       role: "Founder & CEO",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop",
-      bio: "Visionary leader with 10+ years in digital transformation and business strategy.",
+      image: "/assets/Tanishka.jpeg",
+      bio: "Founder and CEO of Brandopia | Marketing and Analytics Intern at Global Ocean Logistics | Student at Flame 2028'Mumbai, Maharashtra, India",
       social: {
-        linkedin: "#",
-        twitter: "#"
+        linkedin: "https://in.linkedin.com/in/tanishka-narsaria",
       }
     },
     {
-      name: "Sarah Chen",
-      role: "Creative Director",
-      image: "https://images.unsplash.com/photo-1494790108755-2616b332c78b?w=300&h=300&fit=crop",
-      bio: "Award-winning designer specializing in brand identity and user experience design.",
+      name: "Maanit Agarwal",
+      role: "Co-Founder",
+      image: "/assets/Maanit.jpeg",
+      bio: "YC Startup School | Co-Founder Brandopia | PW School of Startups Fellowship | Ex Vice Chairman at The Helping Hand NGO | RU’29",
       social: {
-        linkedin: "#",
-        twitter: "#"
+        linkedin: "https://in.linkedin.com/in/maanit-agarwal",
       }
     },
     {
@@ -36,10 +34,7 @@ const Team = () => {
         "Hi, I’m Kishan.",
         "I am a hardworking, punctual, and efficient individual who values trust and responsibility in every role I take on. Currently, I serve as the Chief Human Resources Officer (CHRO) at Brandopia, where I oversee the people side of the company—ensuring smooth coordination, fostering teamwork, and maintaining a culture of reliability and growth. Alongside my role, I am pursuing my education at Bhaurav Devras Saraswati Vidya Mandir, which further strengthens my dedication and discipline."
       ],
-      social: {
-        linkedin: "#",
-        website: "#"
-      }
+      social: {},
     },
     {
       name: "Leander Fernandes",
@@ -75,11 +70,11 @@ const Team = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-background">
+    <div id="top" className="min-h-screen bg-background">
       <SEO 
         title="Meet our leadership Team"
-        description="Meet the talented professionals behind Brandopia. Our diverse team of experts in web development, design, marketing, and AI consultancy."
-        keywords="team, web developers, designers, marketing experts, AI consultants"
+        description="Meet the talented professionals behind Brandopia. Our diverse team of experts in web development, design and marketing."
+        keywords="team, web developers, designers, marketing experts,"
         url="/team"
       />
       <Navigation />
@@ -132,11 +127,11 @@ const Team = () => {
                         <Linkedin className="h-5 w-5" />
                       </a>
                     )}
-                    {member.social.website && (
+                    {/*member.social.website && (
                       <a href={member.social.website} className="text-muted-foreground hover:text-primary transition-colors">
                         <Globe className="h-5 w-5" />
                       </a>
-                    )}
+                    )*/}
                   </div>
                 </CardContent>
               </Card>
@@ -179,11 +174,16 @@ const Team = () => {
           <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
             We're always looking for talented individuals who share our passion for creating exceptional digital experiences.
           </p>
-          <Button asChild size="lg" className="text-lg px-8 py-6 hover:scale-105 transition-transform">
-            <Link to="/contact">
-              View Open Positions
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </Link>
+          <Button
+            size="lg"
+            className="text-lg px-8 py-6 hover:scale-105 transition-transform"
+            onClick={() => {
+              window.scrollTo({ top: 0, behavior: "smooth" });
+              window.location.assign("/contact");
+            }}
+          >
+            View Open Positions
+            <ArrowRight className="ml-2 h-5 w-5" />
           </Button>
         </div>
       </section>

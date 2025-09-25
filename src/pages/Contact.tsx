@@ -61,7 +61,6 @@ const Contact = () => {
     'Custom Graphics',
     'Video Editing',
     'LinkedIn Management',
-    'AI Consultancy'
   ];
 
   const stats = [

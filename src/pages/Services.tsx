@@ -77,7 +77,7 @@ const Services = () => {
         "Brand Guidelines & Books",
         "Custom Graphics & Illustrations",
         "Marketing Collateral Design",
-        "Visual Identity Systems"
+        "Stationary and business card design"
       ]
     },
     {
@@ -104,18 +104,6 @@ const Services = () => {
         "Performance Analytics"
       ]
     },
-    {
-      icon: <Brain className="h-10 w-10" />,
-      title: "AI Consultancy",
-      description: "Expert AI consulting to help integrate artificial intelligence solutions into your business operations.",
-      features: [
-        "AI Strategy Development",
-        "Process Automation",
-        "Custom AI Solutions",
-        "Implementation Support",
-        "Training & Education"
-      ]
-    }
   ];
 
   const process = [
@@ -217,7 +205,7 @@ const Services = () => {
       <SEO 
         title="Our Services"
         description="Comprehensive digital services including web development, SEO, branding, video production, AI consultancy, and more. Transform your business with Brandopia."
-        keywords="web development, SEO services, branding, video editing, AI consultancy, digital marketing, LinkedIn management"
+        keywords="web development, SEO services, branding, video editing, digital marketing, LinkedIn management"
         url="/services"
       />
       <Navigation />
@@ -238,7 +226,7 @@ const Services = () => {
       {/* Services Section */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-muted/20">
         <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-2 justify-items-center gap-8">
             {services.map((service, index) => (
               <Card key={index} className="hover:shadow-xl transition-all duration-300 border-border animate-scale-in hover:scale-105">
                 <CardHeader>
@@ -304,7 +292,7 @@ const Services = () => {
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {packages.map((pkg, index) => (
-              <Card key={index} className={`relative hover:shadow-xl transition-shadow duration-300 ${pkg.popular ? 'border-primary scale-105' : 'border-border'}`}>
+              <Card key={index} className={`mx-auto relative hover:shadow-xl transition-shadow duration-300 ${pkg.popular ? 'border-primary scale-105' : 'border-border'}`}>
                 {pkg.popular && (
                   <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
                     <span className="bg-primary text-primary-foreground px-4 py-1 rounded-full text-sm font-medium">
@@ -370,11 +358,19 @@ const Services = () => {
           <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
             Let's discuss your project and explore how we can help bring your vision to life.
           </p>
-          <Button asChild size="lg" variant="secondary" className="text-lg px-8 py-6 hover:scale-105 transition-transform">
-            <Link to="/contact">
-              Start Your Project
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </Link>
+          <Button
+            size="lg"
+            variant="secondary"
+            className="text-lg px-8 py-6 hover:scale-105 transition-transform"
+            onClick={() => {
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+              setTimeout(() => {
+                window.location.href = '/contact';
+              }, 300);
+            }}
+          >
+            Start Your Project
+            <ArrowRight className="ml-2 h-5 w-5" />
           </Button>
         </div>
       </section>

@@ -1,12 +1,16 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { ArrowRight, Star, Users, Code, Search, Palette, Video, Linkedin, Brain, Megaphone, Globe, MessageCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import SEO from '@/components/SEO';
+import ClientLogos from '@/components/ClientLogos';
+import { useCallback } from 'react';
 
 const Index = () => {
+  const navigate = useNavigate();
+
   const services = [
     {
       icon: <Code className="h-8 w-8" />,
@@ -33,11 +37,6 @@ const Index = () => {
       title: "Video Editing",
       description: "Professional video editing services for long-form and short-form content."
     },
-    {
-      icon: <Brain className="h-8 w-8" />,
-      title: "AI Consultancy",
-      description: "Expert AI consulting to help integrate artificial intelligence into your business."
-    }
   ];
 
   const testimonials = [
@@ -76,12 +75,19 @@ const Index = () => {
     }
   ];
 
+  const handleGetStartedClick = useCallback(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    setTimeout(() => {
+      navigate('/contact');
+    }, 300);
+  }, [navigate]);
+
   return (
     <div className="min-h-screen bg-background">
       <SEO 
         title="Brandopia - Digital Agency & Web Development Services"
         description="Professional web development, SEO, branding, and digital marketing services. Transform your business with Brandopia's expert solutions."
-        keywords="web development, SEO, digital marketing, branding, web design, AI consultancy"
+        keywords="web development, SEO, digital marketing, branding, web design."
         url="/"
       />
       <Navigation />
@@ -104,12 +110,21 @@ const Index = () => {
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
               </Button>
-              <Button variant="outline" size="lg" className="text-lg px-8 py-6 hover:scale-105 transition-transform" asChild>
+              {/*<Button variant="outline" size="lg" className="text-lg px-8 py-6 hover:scale-105 transition-transform" asChild>
                 <Link to="/work">View Our Work</Link>
-              </Button>
+              </Button>*/}
             </div>
           </div>
         </div>
+      </section>
+
+      <section>
+        <div className="flex justify-center">
+          <h1 className='font-bold text-3xl md:text-4xl text-foreground'>
+            Our Clients
+          </h1>
+        </div>
+        <ClientLogos/>
       </section>
 
       {/*About us section*/}
@@ -164,9 +179,12 @@ const Index = () => {
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="flex flex-wrap justify-center gap-8">
             {services.map((service, index) => (
-              <Card key={index} className="group hover:shadow-xl transition-all duration-300 border-border hover:border-primary/50 animate-slide-in hover:scale-105">
+              <Card 
+                key={index} 
+                className="group hover:shadow-xl transition-all duration-300 border-border hover:border-primary/50 animate-slide-in hover:scale-105 w-full max-w-sm"
+              >
                 <CardContent className="p-6">
                   <div className="text-primary mb-4 group-hover:scale-110 transition-transform duration-300">
                     {service.icon}
@@ -185,7 +203,7 @@ const Index = () => {
       </section>
 
       {/* Featured Work Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8">
+      {/*<section className="py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16 animate-fade-up">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
@@ -224,7 +242,7 @@ const Index = () => {
             </Button>
           </div>
         </div>
-      </section>
+      </section>*/}
 
       {/* Testimonials Section
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-muted/20">
@@ -271,11 +289,9 @@ const Index = () => {
           <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
             Let's discuss how we can help bring your vision to life and create something extraordinary together.
           </p>
-          <Button asChild size="lg" className="text-lg px-8 py-6 hover:scale-105 transition-transform animate-float">
-            <Link to="/contact">
-              Get Started Today
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </Link>
+          <Button onClick={handleGetStartedClick} size="lg" className="text-lg px-8 py-6 hover:scale-105 transition-transform animate-float">
+            Get Started Today
+            <ArrowRight className="ml-2 h-5 w-5" />
           </Button>
         </div>
       </section>

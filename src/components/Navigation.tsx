@@ -48,7 +48,7 @@ const Navigation = () => {
               </Link>
             ))}
             <Button asChild className="ml-4">
-              <Link to="/contact">Get Started</Link>
+              <Link to="/contact">Contact us</Link>
             </Button>
           </div>
 
