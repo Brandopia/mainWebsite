@@ -10,6 +10,7 @@ const ClientLogos = () => {
     { name: 'The Future Mogul Magazine', logo: '/assets/TFMM.webp' },
     { name: 'All in One Residential Services (USA)', logo: '/assets/AIO.png' },
     { name: 'Knack Collective', logo: '/assets/Knack.webp' },
+    { name: 'Technofra', logo:'/assets/Technofra.jpeg'},
   ];
 
   const duplicatedLogos = [...logos, ...logos];

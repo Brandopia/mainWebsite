@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Mail, Phone, MapPin, Send, Clock, Users } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -100,6 +99,21 @@ const Contact = () => {
           <p className="text-xl text-muted-foreground leading-relaxed">
             Ready to transform your digital presence? Get in touch with our team and let's discuss your project.
           </p>
+          <div className="mt-8 flex justify-center">
+            <a 
+              href="https://forms.gle/NkR8pAKEbCeaH5Yq5" 
+              target="_blank" 
+              rel="noopener noreferrer"
+            >
+              <Card className="w-full max-w-sm hover:shadow-lg transition-shadow duration-300 border-border">
+                <CardContent className="p-6">
+                  <Button size="lg" className="w-full hover:scale-105 transition-transform">
+                    Contact Us
+                  </Button>
+                </CardContent>
+              </Card>
+            </a>
+          </div>
         </div>
       </section>
 
@@ -125,9 +139,9 @@ const Contact = () => {
       {/* Contact Form and Info Section */}
       <section className="pb-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          <div className="flex justify-center gap-12">
             {/* Contact Form */}
-            <div className="animate-slide-in">
+            {/*<div className="animate-slide-in">
               <Card className="border-border">
                 <CardHeader>
                   <CardTitle className="text-2xl text-foreground">Send us a message</CardTitle>
@@ -210,7 +224,7 @@ const Contact = () => {
                   </form>
                 </CardContent>
               </Card>
-            </div>
+            </div>*/}
 
             {/* Contact Information */}
             <div className="animate-fade-up">
