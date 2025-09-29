@@ -174,17 +174,15 @@ const Team = () => {
           <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
             We're always looking for talented individuals who share our passion for creating exceptional digital experiences.
           </p>
-          <Button
-            size="lg"
-            className="text-lg px-8 py-6 hover:scale-105 transition-transform"
-            onClick={() => {
-              window.scrollTo({ top: 0, behavior: "smooth" });
-              window.location.assign("/contact");
-            }}
-          >
-            View Open Positions
-            <ArrowRight className="ml-2 h-5 w-5" />
-          </Button>
+          <Link to="/contact">
+            <Button
+              size="lg"
+              className="text-lg px-8 py-6 hover:scale-105 transition-transform"
+            >
+              View Open Positions
+              <ArrowRight className="ml-2 h-5 w-5" />
+            </Button>
+          </Link>
         </div>
       </section>
 

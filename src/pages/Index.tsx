@@ -37,6 +37,11 @@ const Index = () => {
       title: "Video Editing",
       description: "Professional video editing services for long-form and short-form content."
     },
+    {
+      icon: <Linkedin className="h-8 w-8" />,
+      title: "LinkedIn Management",
+      description: "Professional LinkedIn management to build your professional network and generate leads."
+    },
   ];
 
   const testimonials = [
