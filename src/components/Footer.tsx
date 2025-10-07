@@ -98,7 +98,31 @@ const Footer = () => {
                   to="/services"
                   className="text-sm text-muted-foreground hover:text-primary transition-colors"
                 >
-                  Brand Consulting
+                  Marketing Consulting
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/services"
+                  className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                >
+                  Brand Design
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/services"
+                  className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                >
+                  Video Editing
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/services"
+                  className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                >
+                  LinkedIn Management
                 </Link>
               </li>
             </ul>
@@ -113,19 +137,6 @@ const Footer = () => {
                 <span>brandopia.org@gmail.com</span>
               </li>
             </ul>
-            <div className="mt-4">
-              <p className="text-sm text-muted-foreground mb-2">Newsletter</p>
-              <div className="flex">
-                <input
-                  type="email"
-                  placeholder="Enter email"
-                  className="px-3 py-1 text-sm border border-border rounded-l-md flex-1 bg-background"
-                />
-                <button className="px-3 py-1 text-sm bg-primary text-primary-foreground rounded-r-md hover:bg-primary/90 transition-colors">
-                  Subscribe
-                </button>
-              </div>
-            </div>
           </div>
         </div>
 
