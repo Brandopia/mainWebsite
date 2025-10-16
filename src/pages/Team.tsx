@@ -45,7 +45,6 @@ const Team = () => {
             ],
       social: {
         linkedin: "https://www.linkedin.com/in/leander-f-a413b8291/",
-        instagram: "https://www.instagram.com/leander0905?igsh=OGQ5ZDc2ODk2ZA=="
       }
     },
   ];
@@ -117,11 +116,11 @@ const Team = () => {
                     )}
                   </div>
                   <div className="flex justify-center space-x-3">
-                    {member.social.instagram && (
+                    {/*{member.social.instagram && (
                       <a href={member.social.instagram} className="text-muted-foreground hover:text-primary transition-colors">
                         <Instagram className="h-5 w-5" />
                       </a>
-                    )}
+                    )}*/}
                     {member.social.linkedin && (
                       <a href={member.social.linkedin} className="text-muted-foreground hover:text-primary transition-colors">
                         <Linkedin className="h-5 w-5" />
