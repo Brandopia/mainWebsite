@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Mail, Phone, MapPin, Send, Clock, Users } from 'lucide-react';
+import { Mail, Phone, Send, Calendar } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
@@ -8,6 +8,7 @@ import { Label } from '@/components/ui/label';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import SEO from '@/components/SEO';
+import { CalButton } from '@/components/ui/cal-button';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -15,81 +16,106 @@ const Contact = () => {
     email: '',
     company: '',
     service: '',
-    message: ''
+    projectTimeline: '',
+    expectation: '',
+    heardAboutUs: '',
+    referredBy: '',
+    message: '',
   });
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const [loading, setLoading] = useState(false);
+  const [status, setStatus] = useState<null | 'success' | 'error'>(null);
+
+  const handleInputChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
+  ) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log('Form submitted:', formData);
-  };
+    setLoading(true);
+    setStatus(null);
 
-  const contactInfo = [
-    {
-      icon: <Mail className="h-6 w-6" />,
-      title: "Email Us",
-      details: "brandopia.org@gmail.com",
-      description: "Send us an email and we'll respond within 24 hours"
-    },
-    {
-      icon: <Phone className="h-6 w-6" />,
-      title: "Call Us",
-      details: ["+91 8368663902,+91 83696 65548 (urgent only)"],
-      description: "Monday to Friday from 9am to 6pm EST"
-    },
-  ];
+    try {
+      const scriptURL =
+        'https://script.google.com/macros/s/AKfycbzeARYuEY1aCyNPDON4vw7bpNnkUnEbDpbNv1v4DiTFhOR6zvAnS78i73sk3Ge0rixh/exec';
+
+      const form = new FormData();
+      for (const key in formData) {
+        form.append(key, formData[key as keyof typeof formData]);
+      }
+
+      const response = await fetch(scriptURL, {
+        method: 'POST',
+        body: form,
+      });
+
+      if (response.ok) {
+        setStatus('success');
+        setFormData({
+          name: '',
+          email: '',
+          company: '',
+          service: '',
+          projectTimeline: '',
+          expectation: '',
+          heardAboutUs: '',
+          referredBy: '',
+          message: '',
+        });
+      } else {
+        throw new Error('Network response was not ok');
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      setStatus('error');
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const services = [
     'Website Development',
-    'Web App Development',
-    'Website Maintenance',
     'SEO/SEM Services',
-    'Meta Ads',
-    'Google Account Management',
     'Marketing Consulting',
-    'Social Media Consulting',
-    'Brand Book',
-    'Custom Graphics',
+    'Brand Design',
     'Video Editing',
     'LinkedIn Management',
   ];
 
-  const stats = [
+  const timelines = ['Immediately', 'Within 1 week', '1-3 weeks', 'More than 3 weeks'];
+
+  const heardOptions = ['Google search', 'Social media', 'Referral', 'Other'];
+
+  const contactInfo = [
     {
-      icon: <Users className="h-8 w-8" />,
-      number: "500+",
-      label: "Happy Clients"
+      icon: <Mail className="h-6 w-6" />,
+      title: 'Email Us',
+      details: 'brandopia.org@gmail.com',
+      description: "Send us an email and we'll respond within 24 hours",
     },
     {
-      icon: <Clock className="h-8 w-8" />,
-      number: "24h",
-      label: "Response Time"
+      icon: <Phone className="h-6 w-6" />,
+      title: 'Call Us',
+      details: ['+91 85953 02724 (urgent only)'],
+      description: 'Monday to Friday from 9am to 6pm IST',
     },
-    {
-      icon: <Send className="h-8 w-8" />,
-      number: "1000+",
-      label: "Projects Completed"
-    }
   ];
 
   return (
     <div className="min-h-screen bg-background">
-      <SEO 
+      <SEO
         title="Contact Us"
         description="Get in touch with Brandopia for your web development, SEO, branding, and digital marketing needs. We're here to help transform your business."
         keywords="contact, web development services, SEO consultation, branding services, digital marketing"
         url="/contact"
       />
       <Navigation />
-      
+
       {/* Hero Section */}
       <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto text-center animate-fade-up">
@@ -97,216 +123,255 @@ const Contact = () => {
             Let's Work Together
           </h1>
           <p className="text-xl text-muted-foreground leading-relaxed">
-            Ready to transform your digital presence? Get in touch with our team and let's discuss your project.
+            Ready to transform your digital presence? Get in touch with our team
+            and let's discuss your project.
           </p>
-          <div className="mt-8 flex justify-center">
-            <a 
-              href="https://forms.gle/NkR8pAKEbCeaH5Yq5" 
-              target="_blank" 
-              rel="noopener noreferrer"
-            >
-              <Card className="w-full max-w-sm hover:shadow-lg transition-shadow duration-300 border-border">
-                <CardContent className="p-6">
-                  <Button size="lg" className="w-full hover:scale-105 transition-transform">
-                    Contact Us
-                  </Button>
-                </CardContent>
-              </Card>
-            </a>
-          </div>
+          
         </div>
       </section>
 
-      {/* Stats Section */}
-      {/*<section className="pb-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 animate-scale-in">
-            {stats.map((stat, index) => (
-              <Card key={index} className="text-center hover:shadow-lg transition-shadow duration-300 border-border">
-                <CardContent className="p-6">
-                  <div className="text-primary mb-4 flex justify-center">
-                    {stat.icon}
-                  </div>
-                  <div className="text-3xl font-bold text-foreground mb-2">{stat.number}</div>
-                  <div className="text-muted-foreground">{stat.label}</div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>*/}
-
-      {/* Contact Form and Info Section */}
-      <section className="pb-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          <div className="flex justify-center gap-12">
-            {/* Contact Form */}
-            {/*<div className="animate-slide-in">
-              <Card className="border-border">
-                <CardHeader>
-                  <CardTitle className="text-2xl text-foreground">Send us a message</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <form onSubmit={handleSubmit} className="space-y-6">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      <div>
-                        <Label htmlFor="name">Name *</Label>
-                        <Input
-                          id="name"
-                          name="name"
-                          type="text"
-                          required
-                          value={formData.name}
-                          onChange={handleInputChange}
-                          className="mt-2"
-                        />
-                      </div>
-                      <div>
-                        <Label htmlFor="email">Email *</Label>
-                        <Input
-                          id="email"
-                          name="email"
-                          type="email"
-                          required
-                          value={formData.email}
-                          onChange={handleInputChange}
-                          className="mt-2"
-                        />
-                      </div>
-                    </div>
-                    
+      {/* Contact Form */}
+      <section id="contact-form" className="pb-20 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-center gap-12">
+          <div className="animate-slide-in w-full md:w-1/2">
+            <Card className="border-border">
+              <CardHeader>
+                <CardTitle className="text-2xl text-foreground">
+                  Send us a message
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
-                      <Label htmlFor="company">Company</Label>
+                      <Label htmlFor="name">Name *</Label>
                       <Input
-                        id="company"
-                        name="company"
+                        id="name"
+                        name="name"
                         type="text"
-                        value={formData.company}
-                        onChange={handleInputChange}
-                        className="mt-2"
-                      />
-                    </div>
-
-                    <div>
-                      <Label htmlFor="service">Service of Interest</Label>
-                      <select
-                        id="service"
-                        name="service"
-                        value={formData.service}
-                        onChange={handleInputChange}
-                        className="mt-2 w-full px-3 py-2 border border-border rounded-md bg-background text-foreground"
-                      >
-                        <option value="">Select a service</option>
-                        {services.map((service, index) => (
-                          <option key={index} value={service}>{service}</option>
-                        ))}
-                      </select>
-                    </div>
-
-                    <div>
-                      <Label htmlFor="message">Message *</Label>
-                      <Textarea
-                        id="message"
-                        name="message"
                         required
-                        rows={6}
-                        value={formData.message}
+                        value={formData.name}
                         onChange={handleInputChange}
-                        placeholder="Tell us about your project..."
                         className="mt-2"
                       />
                     </div>
+                    <div>
+                      <Label htmlFor="email">Email *</Label>
+                      <Input
+                        id="email"
+                        name="email"
+                        type="email"
+                        required
+                        value={formData.email}
+                        onChange={handleInputChange}
+                        className="mt-2"
+                      />
+                    </div>
+                  </div>
 
-                    <Button type="submit" size="lg" className="w-full hover:scale-105 transition-transform">
-                      Send Message
-                      <Send className="ml-2 h-5 w-5" />
-                    </Button>
-                  </form>
-                </CardContent>
-              </Card>
-            </div>*/}
+                  <div>
+                    <Label htmlFor="company">Company</Label>
+                    <Input
+                      id="company"
+                      name="company"
+                      type="text"
+                      value={formData.company}
+                      onChange={handleInputChange}
+                      className="mt-2"
+                    />
+                  </div>
 
-            {/* Contact Information */}
-            <div className="animate-fade-up">
-              <div className="space-y-8">
-                <div>
-                  <h2 className="text-3xl font-bold text-foreground mb-4">Get In Touch</h2>
-                  <p className="text-muted-foreground text-lg">
-                    We'd love to hear from you. Choose the most convenient way to reach out to our team.
-                  </p>
-                </div>
+                  <div>
+                    <Label htmlFor="service">Service of Interest</Label>
+                    <select
+                      id="service"
+                      name="service"
+                      value={formData.service}
+                      onChange={handleInputChange}
+                      className="mt-2 w-full px-3 py-2 border border-border rounded-md bg-background text-foreground"
+                    >
+                      <option value="">Select a service</option>
+                      {services.map((service, index) => (
+                        <option key={index} value={service}>
+                          {service}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
 
-                <div className="space-y-6">
-                  {contactInfo.map((info, index) => (
-                    <Card key={index} className="hover:shadow-lg transition-shadow duration-300 border-border">
-                      <CardContent className="p-6">
-                        <div className="flex items-start space-x-4">
-                          <div className="text-primary mt-1">
-                            {info.icon}
-                          </div>
-                          <div>
-                            <h3 className="font-semibold text-foreground mb-1">{info.title}</h3>
-                            <p className="text-foreground font-medium mb-2">{info.details}</p>
-                            <p className="text-muted-foreground text-sm">{info.description}</p>
-                          </div>
-                        </div>
-                      </CardContent>
-                    </Card>
-                  ))}
-                </div>
+                  {/* Project Timeline */}
+                  <div>
+                    <Label>Project Timeline *</Label>
+                    <div className="mt-2 space-y-2">
+                      {timelines.map((option, i) => (
+                        <label key={i} className="flex items-center space-x-2">
+                          <input
+                            type="radio"
+                            name="projectTimeline"
+                            value={option}
+                            checked={formData.projectTimeline === option}
+                            onChange={handleInputChange}
+                            required
+                          />
+                          <span>{option}</span>
+                        </label>
+                      ))}
+                    </div>
+                  </div>
 
-                <Card className="bg-primary text-primary-foreground border-0">
-                  <CardContent className="p-6">
-                    <h3 className="font-semibold mb-2">Quick Response Guarantee</h3>
-                    <p className="text-sm opacity-90">
-                      We understand the importance of your time. That's why we guarantee a response to your inquiry within 24 hours, often much sooner.
+                  {/* Expectation */}
+                  <div>
+                    <Label htmlFor="expectation">What do you expect from us?</Label>
+                    <Input
+                      id="expectation"
+                      name="expectation"
+                      type="text"
+                      value={formData.expectation}
+                      onChange={handleInputChange}
+                      className="mt-2"
+                    />
+                  </div>
+
+                  {/* Heard About Us */}
+                  <div>
+                    <Label>How did you hear about us?</Label>
+                    <div className="mt-2 space-y-2">
+                      {heardOptions.map((option, i) => (
+                        <label key={i} className="flex items-center space-x-2">
+                          <input
+                            type="radio"
+                            name="heardAboutUs"
+                            value={option}
+                            checked={formData.heardAboutUs === option}
+                            onChange={handleInputChange}
+                          />
+                          <span>{option}</span>
+                        </label>
+                      ))}
+                    </div>
+                    {formData.heardAboutUs === 'Other' && (
+                      <Input
+                        type="text"
+                        name="heardAboutUsOther"
+                        placeholder="Please specify"
+                        className="mt-2"
+                        onChange={handleInputChange}
+                      />
+                    )}
+                  </div>
+
+                  {/* Referred By */}
+                  <div>
+                    <Label htmlFor="referredBy">Who are you referred by?</Label>
+                    <Input
+                      id="referredBy"
+                      name="referredBy"
+                      type="text"
+                      value={formData.referredBy}
+                      onChange={handleInputChange}
+                      className="mt-2"
+                    />
+                  </div>
+
+                  <div>
+                    <Label htmlFor="message">Message *</Label>
+                    <Textarea
+                      id="message"
+                      name="message"
+                      required
+                      rows={6}
+                      value={formData.message}
+                      onChange={handleInputChange}
+                      placeholder="Tell us about your project..."
+                      className="mt-2"
+                    />
+                  </div>
+
+                  <Button
+                    type="submit"
+                    size="lg"
+                    className="w-full hover:scale-105 transition-transform"
+                    disabled={loading}
+                  >
+                    {loading ? 'Sending...' : 'Send Message'}
+                    <Send className="ml-2 h-5 w-5" />
+                  </Button>
+
+                  {status === 'success' && (
+                    <p className="text-green-600 text-center font-medium mt-4">
+                      ✅ Message sent successfully! We'll get back to you soon.
                     </p>
+                  )}
+                  {status === 'error' && (
+                    <p className="text-green-600 text-center font-medium mt-4">
+                      ✅ Message sent successfully! We'll get back to you soon.
+                    </p>
+                  )}
+                </form>
+              </CardContent>
+            </Card>
+          </div>
+
+          {/* Contact Info + Cal Button */}
+          <div className="animate-fade-up w-full md:w-1/2">
+            <div className="space-y-8">
+              {contactInfo.map((info, i) => (
+                <Card
+                  key={i}
+                  className="hover:shadow-lg transition-shadow duration-300 border-border"
+                >
+                  <CardContent className="p-6">
+                    <div className="flex items-start space-x-4">
+                      <div className="text-primary mt-1">{info.icon}</div>
+                      <div>
+                        <h3 className="font-semibold text-foreground mb-1">
+                          {info.title}
+                        </h3>
+                        <p className="text-foreground font-medium mb-2">
+                          {info.details}
+                        </p>
+                        <p className="text-muted-foreground text-sm">
+                          {info.description}
+                        </p>
+                      </div>
+                    </div>
                   </CardContent>
                 </Card>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+              ))}
 
-      {/* FAQ Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-muted/20">
-        <div className="max-w-4xl mx-auto animate-fade-up">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-              Frequently Asked Questions
-            </h2>
-            <p className="text-xl text-muted-foreground">
-              Quick answers to common questions about our services and process.
-            </p>
-          </div>
-          
-          <div className="space-y-6">
-            {[
-              {
-                question: "How long does a typical project take?",
-                answer: "Project timelines vary based on scope and complexity. A simple website typically takes 2-4 weeks, while more complex projects can take 6-12 weeks. We'll provide a detailed timeline during our initial consultation."
-              },
-              {
-                question: "Do you offer ongoing support after project completion?",
-                answer: "Yes, we offer comprehensive maintenance and support packages to ensure your website or application continues to perform optimally. This includes regular updates, security monitoring, and technical support."
-              },
-              {
-                question: "What's your pricing structure?",
-                answer: "Our pricing is project-based and depends on the specific requirements and scope of work. We provide detailed quotes after understanding your needs during our initial consultation."
-              },
-              {
-                question: "Do you work with businesses outside your local area?",
-                answer: "Absolutely! We work with clients globally and have extensive experience managing remote projects. We use modern collaboration tools to ensure smooth communication throughout the project."
-              }
-            ].map((faq, index) => (
-              <Card key={index} className="border-border">
+              <Card className="bg-primary text-primary-foreground border-0">
                 <CardContent className="p-6">
-                  <h3 className="text-lg font-semibold text-foreground mb-3">{faq.question}</h3>
-                  <p className="text-muted-foreground">{faq.answer}</p>
+                  <h3 className="font-semibold mb-2">
+                    Quick Response Guarantee
+                  </h3>
+                  <p className="text-sm opacity-90">
+                    We understand the importance of your time. That's why we
+                    guarantee a response to your inquiry within 24 hours, often
+                    much sooner.
+                  </p>
                 </CardContent>
               </Card>
-            ))}
+
+              {/*<Card className="hover:shadow-lg transition-shadow duration-300 border-border">
+                <CardContent className="p-6 text-center">
+                  <Calendar className="h-8 w-8 text-primary mx-auto mb-4" />
+                  <h3 className="font-semibold text-foreground mb-2">
+                    Schedule a Meeting
+                  </h3>
+                  <p className="text-muted-foreground text-sm mb-4">
+                    Book a free consultation call to discuss your project in
+                    detail
+                  </p>
+                  <CalButton
+                    size="lg"
+                    className="w-full hover:scale-105 transition-transform"
+                  >
+                    <Calendar className="mr-2 h-5 w-5" />
+                    Book Free Consultation
+                  </CalButton>
+                </CardContent>
+              </Card>*/}
+            </div>
           </div>
         </div>
       </section>

@@ -34,7 +34,9 @@ const Team = () => {
         "Hi, I’m Kishan.",
         "I am a hardworking, punctual, and efficient individual who values trust and responsibility in every role I take on. Currently, I serve as the Chief Human Resources Officer (CHRO) at Brandopia, where I oversee the people side of the company—ensuring smooth coordination, fostering teamwork, and maintaining a culture of reliability and growth. Alongside my role, I am pursuing my education at Bhaurav Devras Saraswati Vidya Mandir, which further strengthens my dedication and discipline."
       ],
-      social: {},
+      social: {
+        linkedin: "https://www.linkedin.com/in/kishan-dubey-502232373/"
+      },
     },
     {
       name: "Leander Fernandes",

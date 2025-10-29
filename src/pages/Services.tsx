@@ -228,6 +228,7 @@ const Services = () => {
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-2 justify-items-center gap-8">
             {services.map((service, index) => (
+              <Link to="/contact" key={index} className="w-full">
               <Card key={index} className="hover:shadow-xl transition-all duration-300 border-border animate-scale-in hover:scale-105">
                 <CardHeader>
                   <div className="text-primary mb-4">
@@ -247,6 +248,7 @@ const Services = () => {
                   </ul>
                 </CardContent>
               </Card>
+              </Link>
             ))}
           </div>
         </div>
