@@ -72,7 +72,7 @@ const About = () => {
             </div>
             <div className="relative">
               <img 
-                src="https://images.unsplash.com/photo-1605810230434-7631ac76ec81?w=600&h=400&fit=crop" 
+                src="/assets/e0c5ab15-3ee1-4f58-965d-171841ca11d9.png" 
                 alt="Team collaboration"
                 className="rounded-lg shadow-2xl"
               />
