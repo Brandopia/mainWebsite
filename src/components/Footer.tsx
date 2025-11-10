@@ -54,22 +54,6 @@ const Footer = () => {
                   Our Team
                 </Link>
               </li>
-              <li>
-                <Link
-                  to="/work"
-                  className="text-sm text-muted-foreground hover:text-primary transition-colors"
-                >
-                  Portfolio
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/blog"
-                  className="text-sm text-muted-foreground hover:text-primary transition-colors"
-                >
-                  Blog
-                </Link>
-              </li>
             </ul>
           </div>
 
@@ -145,20 +129,7 @@ const Footer = () => {
             <p className="text-sm text-muted-foreground">
               © 2025 Brandopia. All rights reserved.
             </p>
-            <div className="flex space-x-6 mt-4 md:mt-0">
-              <Link
-                to="#"
-                className="text-sm text-muted-foreground hover:text-primary transition-colors"
-              >
-                Privacy Policy
-              </Link>
-              <Link
-                to="#"
-                className="text-sm text-muted-foreground hover:text-primary transition-colors"
-              >
-                Terms of Service
-              </Link>
-            </div>
+            
           </div>
         </div>
       </div>

@@ -1,10 +1,11 @@
-import { Link } from 'react-router-dom';
+import { Link,useNavigate} from 'react-router-dom';
 import { ArrowRight, Code, Search, Megaphone, Palette, Video, Brain, Globe, Users, Linkedin, CheckCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import SEO from '@/components/SEO';
+import { useCallback } from 'react';
 
 const Services = () => {
   const services = [
@@ -138,6 +139,13 @@ const Services = () => {
       description: "Post-launch, we provide ongoing support and optimization to drive continuous improvement."
     }
   ];
+const navigate= useNavigate();
+  const handleGetStartedClick = useCallback(() => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      setTimeout(() => {
+        navigate('/contact');
+      }, 300);
+    }, [navigate]);
 
   const packages = [
     {
@@ -360,18 +368,8 @@ const Services = () => {
           <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
             Let's discuss your project and explore how we can help bring your vision to life.
           </p>
-          <Button
-            size="lg"
-            variant="secondary"
-            className="text-lg px-8 py-6 hover:scale-105 transition-transform"
-            onClick={() => {
-              window.scrollTo({ top: 0, behavior: 'smooth' });
-              setTimeout(() => {
-                window.location.href = '/contact';
-              }, 300);
-            }}
-          >
-            Start Your Project
+          <Button onClick={handleGetStartedClick} size="lg" className="text-lg px-8 py-6 hover:scale-105 transition-transform animate-float bg-white text-black border-2">
+            Get Started Today
             <ArrowRight className="ml-2 h-5 w-5" />
           </Button>
         </div>

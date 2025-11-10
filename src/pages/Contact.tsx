@@ -95,13 +95,13 @@ const Contact = () => {
     {
       icon: <Mail className="h-6 w-6" />,
       title: 'Email Us',
-      details: 'brandopia.org@gmail.com',
+      details: 'brandopia.org@gmail.com Kishandubey1410@gmail.com',
       description: "Send us an email and we'll respond within 24 hours",
     },
     {
       icon: <Phone className="h-6 w-6" />,
       title: 'Call Us',
-      details: ['+91 85953 02724 (urgent only)'],
+      details: ['+91 85953 02724 (urgent only) +91 83686 63902'],
       description: 'Monday to Friday from 9am to 6pm IST',
     },
   ];
