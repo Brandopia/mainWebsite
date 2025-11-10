@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Mail, Twitter, Facebook, Instagram, Linkedin } from "lucide-react";
+import { Mail, Twitter, Facebook, Instagram, Linkedin, Phone } from "lucide-react";
 
 const Footer = () => {
   return (
@@ -119,6 +119,10 @@ const Footer = () => {
               <li className="flex items-center space-x-2 text-sm text-muted-foreground">
                 <Mail className="h-4 w-4" />
                 <span>brandopia.org@gmail.com</span>
+              </li>
+              <li className="flex items-center space-x-2 text-sm text-muted-foreground">
+                <Phone className="h-4 w-4" />
+                <span>+91 83686 63902</span>
               </li>
             </ul>
           </div>
